@@ -3,55 +3,54 @@
 
 
 int inputIndex = 0;
-char input[100]; // Déclaration de l'entrée utilisateur
+char input[100] = ""; 
 int validation = 0;
 int avancement = 0;
 int borne1;
 int borne2;
 
 void myKey(int c) {
-    if (avancement == 0)
-    {
-        if (c==13)
-        {
-            avancement++;
-            c = 0;
+   switch (avancement)
+   {
+   case 0:
+   if (c==13)
+   {
+       avancement++;
+       c = 0;
 
-        }
-        
+   }
+    break;
+   
+    case 1:
+    switch (c) {
+        case 8: 
+        case 46: // Touche suppr
+            if(inputIndex>0){
+            input[--inputIndex] = '\0';}
+
+            
+            break;
+        case 13://entrée
+            validation = 1;
+            avancement++;
+            break;
+        default:
+            if (inputIndex < 99) {
+                input[inputIndex++] = c; // Ajouter le caractère à l'entrée
+                input[inputIndex] = '\0'; // Terminer la chaîne
+                // printf("%s \n", input1);
+            }
+            break;
     }
+    break;
     
-    if (avancement==1)
-    {   
-        switch (c) {
-            case 8: // Touche backspace
-                inputIndex = 0; // Réinitialiser l'index
-                input[0] = '\0'; // Réinitialiser l'entrée
-                
-                
-                break;
-            case 46: // Touche suppr
-                inputIndex = 0; // Réinitialiser l'index
-                input[0] = '\0'; // Réinitialiser l'entrée
-                
-                
-                break;
-            case 13://entrée
-                validation = 1;
-                avancement++;
-                break;
-            default:
-                if (inputIndex < 99) {
-                    input[inputIndex++] = c; // Ajouter le caractère à l'entrée
-                    input[inputIndex] = '\0'; // Terminer la chaîne
-                    // printf("%s \n", input1);
-                }
-                break;
-        }
-    }else if (avancement == 2)
-    {
-        //bornes
-    }
+   case 2:
+   //bornes
+   break;
+   default:
+    break;
+   }
+    
     
     
     
@@ -72,7 +71,7 @@ void myDraw(void) {
     outtextxy(0,0,avance);
     if (avancement==0)
     {
-        outtextxy(-0.9F, 0.9F, "entrée pour formule");
+        outtextxy(-0.9F, 0.9F, "entrer pour formule");
 
     }
     else if (avancement==1)
@@ -89,6 +88,5 @@ void myDraw(void) {
     
     
     
-    //affichage du texte
     
 }
