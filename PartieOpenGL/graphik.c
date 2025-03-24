@@ -12,13 +12,13 @@ int avancement = 0;
 
 
 float xformule = -0.9;
-float yformule = 0.7;
+float yformule = 0.4;
 float xborne1 = -0.9;
 float yborne1 = -0.7;
 float xborne2 = 0.6;
 float yborne2 = -0.7;
-float xtitre;
-float ytitre;
+float xtitre = -1;
+float ytitre = 0.8;
 
 
 void myKey(int c) {
@@ -140,21 +140,25 @@ void myDraw(void) {
     outtextxy(-0.9, 0.9, "enter pour avancer, esc pour revenir");
     if (avancement==0)
     {
+        outtextxy(xtitre,ytitre, "TITRE 1");
 
     }
     else if (avancement==1)
-    {
+    {           outtextxy(xtitre,ytitre, "Entrez la formule");
+
         outtextxy(xformule,yformule, input);
 
     }
     else if (avancement == 2 ) // borne 1
-    {
+    {           outtextxy(xtitre,ytitre, "Entrez la 1ere borne");
+
         outtextxy(xformule,yformule, input);
         outtextxy(xborne1, yborne1, input1);
         outtextxy(xborne2, yborne2, input2);
     }else if (avancement == 3 ) // borne 2
     {
         outtextxy(xformule,yformule, input);
+        outtextxy(xtitre,ytitre, "Entrez la 2eme borne");
         outtextxy(xborne1, yborne1, input1);
         outtextxy(xborne2, yborne2, input2);
         
